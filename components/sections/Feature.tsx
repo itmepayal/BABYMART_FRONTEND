@@ -7,11 +7,10 @@ export const Feature = () => {
     <div className="mx-auto max-w-330">
       <div
         className="
-            grid items-stretch gap-4 rounded-lg bg-main-mix-bg/50
-            px-4 py-6
-            grid-cols-2
-            lg:flex lg:items-center lg:justify-between lg:px-8 lg:py-7
-          "
+  flex flex-col gap-4 rounded-lg bg-main-mix-bg/50
+  px-4 py-6
+  lg:flex-row lg:items-center lg:justify-between lg:px-8 lg:py-7
+"
       >
         {Features.map((feature, index) => {
           const Icon = feature.icon;
