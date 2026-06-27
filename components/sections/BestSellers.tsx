@@ -5,7 +5,7 @@ import { ProductCard } from "@/components/product/ProductCard";
 import { Product } from "@/types/product";
 import { ViewModal } from "@/components/product/ViewModal";
 import { CartDrawer, type CartItem } from "@/components/product/Cartdrawer";
-import { FilterHeader, SectionHeader } from "@/components/common/SectionHeader";
+import { FilterHeader } from "@/components/common/SectionHeader";
 import { Products, PROMO_BANNER } from "@/lib/constants";
 
 const FILTERS = ["All", "Kid Clothing", "Feeding Set", "Kid Toys", "Strollers"];

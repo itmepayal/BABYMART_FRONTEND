@@ -9,8 +9,7 @@ export const Feature = () => {
         className="
             grid items-stretch gap-4 rounded-lg bg-main-mix-bg/50
             px-4 py-6
-            grid-cols-1
-            sm:grid-cols-2
+            grid-cols-2
             lg:flex lg:items-center lg:justify-between lg:px-8 lg:py-7
           "
       >
@@ -55,7 +54,7 @@ export const Feature = () => {
               )}
 
               {!isLastOverall && !isLastInRow && (
-                <div className="absolute inset-x-3 bottom-0 hidden h-px bg-border sm:block lg:hidden" />
+                <div className="absolute inset-x-3 bottom-0 block h-px bg-border lg:hidden" />
               )}
             </div>
           );

@@ -75,7 +75,11 @@ export function FilterHeader({
         {title}
       </h2>
 
-      {children}
+      {children && (
+        <div className="flex w-full justify-center sm:w-auto sm:justify-start">
+          {children}
+        </div>
+      )}
 
       {showLink && (
         <a
