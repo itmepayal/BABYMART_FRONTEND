@@ -1,14 +1,18 @@
 import { Eye, Heart, ShoppingCart } from "lucide-react";
-import { StarRating } from "@/components/layout/flash-sale/StarRating";
+import { StarRating } from "@/components/product/StarRating";
 import { Product } from "@/types/product";
+import { useRouter } from "next/navigation";
 
 export function ProductCard({
   product,
   onQuickView,
+  onAddToCart,
 }: {
   product: Product;
   onQuickView: (product: Product) => void;
+  onAddToCart: (product: Product) => void;
 }) {
+  const router = useRouter();
   return (
     <div className="group w-full shrink-0 snap-start px-0">
       <div className="relative aspect-square overflow-hidden rounded bg-main-mix-bg/40">
@@ -39,8 +43,16 @@ export function ProductCard({
               label: "Quick view",
               onClick: () => onQuickView(product),
             },
-            { Icon: Heart, label: "Add to wishlist", onClick: () => {} },
-            { Icon: ShoppingCart, label: "Add to cart", onClick: () => {} },
+            {
+              Icon: Heart,
+              label: "Add to wishlist",
+              onClick: () => router.push("/wishlist"),
+            },
+            {
+              Icon: ShoppingCart,
+              label: "Add to cart",
+              onClick: () => onAddToCart(product),
+            },
           ].map(({ Icon, label, onClick }, i) => (
             <button
               key={label}

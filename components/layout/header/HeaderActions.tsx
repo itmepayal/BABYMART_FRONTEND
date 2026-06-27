@@ -2,10 +2,7 @@
 
 import { useState } from "react";
 import { Heart, Search, ShoppingCart, User } from "lucide-react";
-import {
-  CartDrawer,
-  type CartItem,
-} from "@/components/layout/header/cart/Cartdrawer";
+import { CartDrawer, type CartItem } from "@/components/product/Cartdrawer";
 
 interface HeaderActionsProps {
   cartCount: number;

@@ -1,19 +1,14 @@
-import Header from "@/components/layout/header/Header";
-import Banner from "@/components/layout/banner/Banner";
-import Feature from "@/components/layout/feature/Feature";
-import FlashSale from "@/components/layout/flash-sale/FlashSale";
-import CategoryList from "@/components/layout/category-list/Categorylist";
+import Layout from "@/components/layout";
+import Section from "@/components/sections";
 
-const page = () => {
+const Page = () => {
   return (
-    <>
-      <Header />
-      <Banner />
-      <Feature />
-      <FlashSale />
-      <CategoryList />
-    </>
+    <Layout>
+      <section className="mx-auto max-w-330">
+        <Section />
+      </section>
+    </Layout>
   );
 };
 
-export default page;
+export default Page;

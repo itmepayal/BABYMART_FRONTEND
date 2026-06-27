@@ -1,9 +1,9 @@
 export function StarRating({
-  rating,
-  reviews,
+  rating = 0,
+  reviews = 0,
 }: {
-  rating: number;
-  reviews: number;
+  rating?: number;
+  reviews?: number;
 }) {
   return (
     <div className="flex items-center gap-1 text-sun">
