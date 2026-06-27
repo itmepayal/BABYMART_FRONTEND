@@ -6,6 +6,9 @@ import { NewArrivals } from "@/components/sections/NewArrivals";
 import { HeroBanner } from "@/components/sections/HeroBanner";
 import { PromoBanners } from "@/components/sections/PromoBanners";
 import { BestSellers } from "@/components/sections/BestSellers";
+import { TodaysSuggestions } from "@/components/sections/TodaysSuggestions";
+import { Brands } from "@/components/sections/Brand";
+import { Blogs } from "@/components/sections/Blogs";
 
 const Page = () => {
   return (
@@ -18,6 +21,9 @@ const Page = () => {
       <HeroBanner />
       <BestSellers />
       <PromoBanners />
+      <TodaysSuggestions />
+      <Brands />
+      <Blogs />
     </main>
   );
 };

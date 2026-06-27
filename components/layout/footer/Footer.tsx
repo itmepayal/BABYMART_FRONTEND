@@ -14,7 +14,7 @@ import { FooterColumn } from "@/components/layout/footer/FooterColumn";
 export default function Footer() {
   const [email, setEmail] = useState("");
   return (
-    <footer className="relative mt-16 w-full">
+    <footer className="relative sm:mt-16 mt-3 w-full">
       <div className="border-t-[6px] border-(--color-main) pb-10 pt-2 rounded-t-3xl">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10">
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr_1.3fr]">

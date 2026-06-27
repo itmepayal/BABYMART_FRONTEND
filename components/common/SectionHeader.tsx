@@ -20,7 +20,11 @@ export function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <div
-      className={`mb-5 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-center sm:justify-between sm:gap-4 ${className}`}
+      className={`mb-5 flex sm:mb-6 sm:flex-row sm:items-center sm:justify-between sm:gap-4 ${
+        children
+          ? "flex-col gap-3"
+          : "flex-row items-center justify-between gap-3"
+      } ${className}`}
     >
       <h2 className="min-w-0 shrink-0 text-xl font-bold leading-tight text-(--title_typo-color) sm:text-4xl lg:text-4xl">
         {title}
@@ -32,11 +36,11 @@ export function SectionHeader({
         <a
           href={href}
           className="
-            group flex w-fit shrink-0 items-center gap-1 self-start rounded border
+            group flex w-fit shrink-0 items-center gap-1 rounded border
             border-border px-2.5 py-1 text-xs font-medium whitespace-nowrap
             text-(--title_typo-color)
             transition-all duration-200 ease-out
-            sm:gap-1.5 sm:self-auto sm:px-4 sm:py-1.5 sm:text-sm
+            sm:gap-1.5 sm:px-4 sm:py-1.5 sm:text-sm
             hover:border-dashed hover:border-main hover:text-main
           "
         >

@@ -6,220 +6,14 @@ import { Product } from "@/types/product";
 import { ViewModal } from "@/components/product/ViewModal";
 import { CartDrawer, type CartItem } from "@/components/product/Cartdrawer";
 import { SectionHeader } from "@/components/common/SectionHeader";
+import { Products, PROMO_BANNER } from "@/lib/constants";
 
 const FILTERS = ["All", "Kid Clothing", "Feeding Set", "Kid Toys", "Strollers"];
 
-const PROMO_BANNER =
-  "https://bw-kidxtore.bzotech.com/wp-content/uploads/2023/07/home4-bn-tab1.jpg";
-
-const PRODUCT_IMAGE =
-  "https://bw-kidxtore.bzotech.com/wp-content/uploads/2023/10/product-new-5-400x400.png";
-
-const NEW_ARRIVALS: Product[] = [
-  {
-    id: "na1",
-    title: "Traditional Ride On Toys Kid",
-    image: PRODUCT_IMAGE,
-    images: [PRODUCT_IMAGE],
-    rating: 5,
-    reviews: 1,
-    price: 56,
-    badge: { label: "New", tone: "new" },
-    inStock: true,
-    productType: "Kid Toys",
-    vendor: "KidXtore",
-    reviewCount: 1,
-    sold: 184,
-    code: "TOY11",
-    categories: ["2-4 Years", "4-6 Years", "Ride On Toys", "Outdoor Toys"],
-    offers: [
-      { icon: "shipping", label: "Free shipping orders from $199" },
-      { icon: "safe", label: "100% safe for kid" },
-      { icon: "membership", label: "Membership offers 10%, 15%, 20% off" },
-      { icon: "returns", label: "Returns within 30 days" },
-    ],
-    description:
-      "A classic ride-on toy car for kids, built for safe indoor and outdoor play.",
-  },
-  {
-    id: "na2",
-    title: "Frog-Shaped Toilet For Children",
-    image: PRODUCT_IMAGE,
-    images: [PRODUCT_IMAGE],
-    rating: 0,
-    reviews: 1,
-    price: 40,
-    badge: { label: "New", tone: "new" },
-    inStock: true,
-    productType: "Kid Toys",
-    vendor: "KidXtore",
-    reviewCount: 1,
-    sold: 62,
-    code: "TOY12",
-    categories: ["1-3 Years", "Potty Training", "Bathroom"],
-    offers: [
-      { icon: "shipping", label: "Free shipping orders from $199" },
-      { icon: "safe", label: "100% safe for kid" },
-      { icon: "membership", label: "Membership offers 10%, 15%, 20% off" },
-      { icon: "returns", label: "Returns within 30 days" },
-    ],
-    description:
-      "A fun frog-shaped potty training seat designed for comfort and ease of use.",
-  },
-  {
-    id: "na3",
-    title: "Merries Diapers For Babies",
-    image: PRODUCT_IMAGE,
-    images: [PRODUCT_IMAGE],
-    rating: 4,
-    reviews: 1,
-    price: 21,
-    badge: { label: "New", tone: "new" },
-    inStock: true,
-    productType: "Feeding Set",
-    vendor: "KidXtore",
-    reviewCount: 1,
-    sold: 521,
-    code: "FEED04",
-    categories: ["0-1 Years", "1-3 Years", "Diapers", "Baby Care"],
-    offers: [
-      { icon: "shipping", label: "Free shipping orders from $199" },
-      { icon: "safe", label: "100% safe for kid" },
-      { icon: "membership", label: "Membership offers 10%, 15%, 20% off" },
-      { icon: "returns", label: "Returns within 30 days" },
-    ],
-    description: "Soft and absorbent diapers designed for everyday comfort.",
-  },
-  {
-    id: "na4",
-    title: "Tricycle For Kids To Learn To Walk",
-    image: PRODUCT_IMAGE,
-    images: [PRODUCT_IMAGE],
-    rating: 5,
-    reviews: 1,
-    price: 52,
-    badge: { label: "New", tone: "new" },
-    inStock: true,
-    productType: "Strollers",
-    vendor: "KidXtore",
-    reviewCount: 1,
-    sold: 147,
-    code: "STR07",
-    categories: ["2-4 Years", "4-6 Years", "Tricycles", "Outdoor Toys"],
-    offers: [
-      { icon: "shipping", label: "Free shipping orders from $199" },
-      { icon: "safe", label: "100% safe for kid" },
-      { icon: "membership", label: "Membership offers 10%, 15%, 20% off" },
-      { icon: "returns", label: "Returns within 30 days" },
-    ],
-    description:
-      "A sturdy tricycle to help young children build balance and confidence.",
-  },
-  {
-    id: "na5",
-    title: "Feeding Set To Help Children Eat Easily",
-    image: PRODUCT_IMAGE,
-    images: [PRODUCT_IMAGE],
-    rating: 5,
-    reviews: 1,
-    price: 33,
-    badge: { label: "New", tone: "new" },
-    inStock: true,
-    productType: "Feeding Set",
-    vendor: "KidXtore",
-    reviewCount: 1,
-    sold: 268,
-    code: "FEED05",
-    categories: ["6 Months+", "1-3 Years", "Feeding Set", "Mealtime"],
-    offers: [
-      { icon: "shipping", label: "Free shipping orders from $199" },
-      { icon: "safe", label: "100% safe for kid" },
-      { icon: "membership", label: "Membership offers 10%, 15%, 20% off" },
-      { icon: "returns", label: "Returns within 30 days" },
-    ],
-    description:
-      "A complete feeding set with bowls, plates, and utensils for little hands.",
-  },
-  {
-    id: "na6",
-    title: "Spectra S1 Plus Breast Pump",
-    image: PRODUCT_IMAGE,
-    images: [PRODUCT_IMAGE],
-    rating: 4,
-    reviews: 1,
-    price: 56,
-    badge: { label: "New", tone: "new" },
-    inStock: true,
-    productType: "Feeding Set",
-    vendor: "KidXtore",
-    reviewCount: 1,
-    sold: 93,
-    code: "FEED06",
-    categories: ["Breastfeeding", "Mothers", "Feeding Set"],
-    offers: [
-      { icon: "shipping", label: "Free shipping orders from $199" },
-      { icon: "safe", label: "100% safe for kid" },
-      { icon: "membership", label: "Membership offers 10%, 15%, 20% off" },
-      { icon: "returns", label: "Returns within 30 days" },
-    ],
-    description: "A reliable, hospital-grade breast pump for everyday use.",
-  },
-  {
-    id: "na7",
-    title: "High Quality Sterilizer Safe To Use For Mothers",
-    image: PRODUCT_IMAGE,
-    images: [PRODUCT_IMAGE],
-    rating: 4,
-    reviews: 1,
-    price: 67,
-    badge: { label: "New", tone: "new" },
-    inStock: true,
-    productType: "Feeding Set",
-    vendor: "KidXtore",
-    reviewCount: 1,
-    sold: 76,
-    code: "FEED07",
-    categories: ["Sterilizers", "Baby Care", "Feeding Set"],
-    offers: [
-      { icon: "shipping", label: "Free shipping orders from $199" },
-      { icon: "safe", label: "100% safe for kid" },
-      { icon: "membership", label: "Membership offers 10%, 15%, 20% off" },
-      { icon: "returns", label: "Returns within 30 days" },
-    ],
-    description:
-      "A safe and effective sterilizer for baby bottles and feeding accessories.",
-  },
-  {
-    id: "na8",
-    title: "Quilted Wind Jacket",
-    image: PRODUCT_IMAGE,
-    images: [PRODUCT_IMAGE],
-    rating: 5,
-    reviews: 1,
-    price: 55,
-    oldPrice: 76,
-    badge: { label: "New", tone: "new" },
-    discountBadge: "-28%",
-    inStock: true,
-    productType: "Kid Clothing",
-    vendor: "KidXtore",
-    reviewCount: 1,
-    sold: 312,
-    code: "CLO09",
-    categories: ["4-6 Years", "6-8 Years", "Jackets", "Winter Wear"],
-    offers: [
-      { icon: "shipping", label: "Free shipping orders from $199" },
-      { icon: "safe", label: "100% safe for kid" },
-      { icon: "membership", label: "Membership offers 10%, 15%, 20% off" },
-      { icon: "returns", label: "Returns within 30 days" },
-    ],
-    description:
-      "A warm, quilted jacket designed to keep kids cozy in cold weather.",
-  },
-];
+const ITEMS_PER_PAGE = 8;
 
 export function NewArrivals({
-  products = NEW_ARRIVALS,
+  products = Products,
   onQuickView = () => {},
 }: {
   products?: Product[];
@@ -233,6 +27,8 @@ export function NewArrivals({
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [cartOpen, setCartOpen] = useState(false);
 
+  const [currentPage, setCurrentPage] = useState(1);
+
   const counts = useMemo(() => {
     const map: Record<string, number> = { All: products.length };
     for (const f of FILTERS.slice(1)) {
@@ -245,6 +41,23 @@ export function NewArrivals({
     activeFilter === "All"
       ? products
       : products.filter((p) => p.productType === activeFilter);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
+
+  const paginated = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filtered.slice(start, start + ITEMS_PER_PAGE);
+  }, [filtered, currentPage]);
+
+  const handleFilterChange = (filter: string) => {
+    setActiveFilter(filter);
+    setCurrentPage(1);
+  };
+
+  const goToPage = (page: number) => {
+    const clamped = Math.min(Math.max(1, page), totalPages);
+    setCurrentPage(clamped);
+  };
 
   const handleAddToCart = (product: Product) => {
     setCartItems((prev) => {
@@ -293,7 +106,7 @@ export function NewArrivals({
               <button
                 key={filter}
                 type="button"
-                onClick={() => setActiveFilter(filter)}
+                onClick={() => handleFilterChange(filter)}
                 aria-pressed={active}
                 className={[
                   "inline-flex items-center gap-1.5 whitespace-nowrap rounded border px-3 py-1.5 text-sm font-medium transition-all duration-200",
@@ -332,9 +145,9 @@ export function NewArrivals({
           />
         </a>
 
-        {filtered.length > 0 ? (
+        {paginated.length > 0 ? (
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
-            {filtered.map((product) => (
+            {paginated.map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
@@ -357,6 +170,52 @@ export function NewArrivals({
           </div>
         )}
       </div>
+
+      {/* Pagination controls */}
+      {totalPages > 1 && (
+        <nav
+          aria-label="Pagination"
+          className="mt-6 flex items-center justify-center gap-1.5 sm:gap-2"
+        >
+          <button
+            type="button"
+            onClick={() => goToPage(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="inline-flex items-center justify-center rounded border border-border px-3 py-1.5 text-sm font-medium text-(--body_typo-color) transition-all duration-200 hover:border-main hover:text-main disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-border disabled:hover:text-(--body_typo-color)"
+          >
+            Prev
+          </button>
+
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+            const active = page === currentPage;
+            return (
+              <button
+                key={page}
+                type="button"
+                onClick={() => goToPage(page)}
+                aria-current={active ? "page" : undefined}
+                className={[
+                  "inline-flex h-9 w-9 items-center justify-center rounded border text-sm font-medium transition-all duration-200",
+                  active
+                    ? "border-main bg-main text-white shadow-sm"
+                    : "border-border bg-transparent text-(--body_typo-color) hover:border-main hover:text-main",
+                ].join(" ")}
+              >
+                {page}
+              </button>
+            );
+          })}
+
+          <button
+            type="button"
+            onClick={() => goToPage(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="inline-flex items-center justify-center rounded border border-border px-3 py-1.5 text-sm font-medium text-(--body_typo-color) transition-all duration-200 hover:border-main hover:text-main disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-border disabled:hover:text-(--body_typo-color)"
+          >
+            Next
+          </button>
+        </nav>
+      )}
 
       {quickViewProduct && (
         <ViewModal

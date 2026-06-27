@@ -1,4 +1,5 @@
-import { Post } from "@/types/blog";
+import { NewsPost } from "@/types/blog";
+import { Brand } from "@/types/brand";
 import { Category } from "@/types/category";
 import { Product } from "@/types/product";
 import { Tag, Headphones, RefreshCw, ShieldCheck } from "lucide-react";
@@ -95,6 +96,12 @@ const gallery_images = [
   "https://bs-kidxtore.myshopify.com/cdn/shop/files/home4-bn1.jpg?v=1709970686&width=600",
 ];
 
+export const PROMO_BANNER =
+  "https://bw-kidxtore.bzotech.com/wp-content/uploads/2023/07/home4-bn-tab1.jpg";
+
+const PRODUCT_IMAGE =
+  "https://bw-kidxtore.bzotech.com/wp-content/uploads/2023/10/product-new-5-400x400.png";
+
 export const Products: Product[] = [
   {
     id: "p1",
@@ -190,6 +197,206 @@ export const Products: Product[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
   },
+  {
+    id: "na1",
+    title: "Traditional Ride On Toys Kid",
+    image: PRODUCT_IMAGE,
+    images: [PRODUCT_IMAGE],
+    rating: 5,
+    reviews: 1,
+    price: 56,
+    badge: { label: "New", tone: "new" },
+    inStock: true,
+    productType: "Kid Toys",
+    vendor: "KidXtore",
+    reviewCount: 1,
+    sold: 184,
+    code: "TOY11",
+    categories: ["2-4 Years", "4-6 Years", "Ride On Toys", "Outdoor Toys"],
+    offers: [
+      { icon: "shipping", label: "Free shipping orders from $199" },
+      { icon: "safe", label: "100% safe for kid" },
+      { icon: "membership", label: "Membership offers 10%, 15%, 20% off" },
+      { icon: "returns", label: "Returns within 30 days" },
+    ],
+    description:
+      "A classic ride-on toy car for kids, built for safe indoor and outdoor play.",
+  },
+  {
+    id: "na2",
+    title: "Frog-Shaped Toilet For Children",
+    image: PRODUCT_IMAGE,
+    images: [PRODUCT_IMAGE],
+    rating: 0,
+    reviews: 1,
+    price: 40,
+    badge: { label: "New", tone: "new" },
+    inStock: true,
+    productType: "Kid Toys",
+    vendor: "KidXtore",
+    reviewCount: 1,
+    sold: 62,
+    code: "TOY12",
+    categories: ["1-3 Years", "Potty Training", "Bathroom"],
+    offers: [
+      { icon: "shipping", label: "Free shipping orders from $199" },
+      { icon: "safe", label: "100% safe for kid" },
+      { icon: "membership", label: "Membership offers 10%, 15%, 20% off" },
+      { icon: "returns", label: "Returns within 30 days" },
+    ],
+    description:
+      "A fun frog-shaped potty training seat designed for comfort and ease of use.",
+  },
+  {
+    id: "na3",
+    title: "Merries Diapers For Babies",
+    image: PRODUCT_IMAGE,
+    images: [PRODUCT_IMAGE],
+    rating: 4,
+    reviews: 1,
+    price: 21,
+    badge: { label: "New", tone: "new" },
+    inStock: true,
+    productType: "Feeding Set",
+    vendor: "KidXtore",
+    reviewCount: 1,
+    sold: 521,
+    code: "FEED04",
+    categories: ["0-1 Years", "1-3 Years", "Diapers", "Baby Care"],
+    offers: [
+      { icon: "shipping", label: "Free shipping orders from $199" },
+      { icon: "safe", label: "100% safe for kid" },
+      { icon: "membership", label: "Membership offers 10%, 15%, 20% off" },
+      { icon: "returns", label: "Returns within 30 days" },
+    ],
+    description: "Soft and absorbent diapers designed for everyday comfort.",
+  },
+  {
+    id: "na4",
+    title: "Tricycle For Kids To Learn To Walk",
+    image: PRODUCT_IMAGE,
+    images: [PRODUCT_IMAGE],
+    rating: 5,
+    reviews: 1,
+    price: 52,
+    badge: { label: "New", tone: "new" },
+    inStock: true,
+    productType: "Strollers",
+    vendor: "KidXtore",
+    reviewCount: 1,
+    sold: 147,
+    code: "STR07",
+    categories: ["2-4 Years", "4-6 Years", "Tricycles", "Outdoor Toys"],
+    offers: [
+      { icon: "shipping", label: "Free shipping orders from $199" },
+      { icon: "safe", label: "100% safe for kid" },
+      { icon: "membership", label: "Membership offers 10%, 15%, 20% off" },
+      { icon: "returns", label: "Returns within 30 days" },
+    ],
+    description:
+      "A sturdy tricycle to help young children build balance and confidence.",
+  },
+  {
+    id: "na5",
+    title: "Feeding Set To Help Children Eat Easily",
+    image: PRODUCT_IMAGE,
+    images: [PRODUCT_IMAGE],
+    rating: 5,
+    reviews: 1,
+    price: 33,
+    badge: { label: "New", tone: "new" },
+    inStock: true,
+    productType: "Feeding Set",
+    vendor: "KidXtore",
+    reviewCount: 1,
+    sold: 268,
+    code: "FEED05",
+    categories: ["6 Months+", "1-3 Years", "Feeding Set", "Mealtime"],
+    offers: [
+      { icon: "shipping", label: "Free shipping orders from $199" },
+      { icon: "safe", label: "100% safe for kid" },
+      { icon: "membership", label: "Membership offers 10%, 15%, 20% off" },
+      { icon: "returns", label: "Returns within 30 days" },
+    ],
+    description:
+      "A complete feeding set with bowls, plates, and utensils for little hands.",
+  },
+  {
+    id: "na6",
+    title: "Spectra S1 Plus Breast Pump",
+    image: PRODUCT_IMAGE,
+    images: [PRODUCT_IMAGE],
+    rating: 4,
+    reviews: 1,
+    price: 56,
+    badge: { label: "New", tone: "new" },
+    inStock: true,
+    productType: "Feeding Set",
+    vendor: "KidXtore",
+    reviewCount: 1,
+    sold: 93,
+    code: "FEED06",
+    categories: ["Breastfeeding", "Mothers", "Feeding Set"],
+    offers: [
+      { icon: "shipping", label: "Free shipping orders from $199" },
+      { icon: "safe", label: "100% safe for kid" },
+      { icon: "membership", label: "Membership offers 10%, 15%, 20% off" },
+      { icon: "returns", label: "Returns within 30 days" },
+    ],
+    description: "A reliable, hospital-grade breast pump for everyday use.",
+  },
+  {
+    id: "na7",
+    title: "High Quality Sterilizer Safe To Use For Mothers",
+    image: PRODUCT_IMAGE,
+    images: [PRODUCT_IMAGE],
+    rating: 4,
+    reviews: 1,
+    price: 67,
+    badge: { label: "New", tone: "new" },
+    inStock: true,
+    productType: "Feeding Set",
+    vendor: "KidXtore",
+    reviewCount: 1,
+    sold: 76,
+    code: "FEED07",
+    categories: ["Sterilizers", "Baby Care", "Feeding Set"],
+    offers: [
+      { icon: "shipping", label: "Free shipping orders from $199" },
+      { icon: "safe", label: "100% safe for kid" },
+      { icon: "membership", label: "Membership offers 10%, 15%, 20% off" },
+      { icon: "returns", label: "Returns within 30 days" },
+    ],
+    description:
+      "A safe and effective sterilizer for baby bottles and feeding accessories.",
+  },
+  {
+    id: "na8",
+    title: "Quilted Wind Jacket",
+    image: PRODUCT_IMAGE,
+    images: [PRODUCT_IMAGE],
+    rating: 5,
+    reviews: 1,
+    price: 55,
+    oldPrice: 76,
+    badge: { label: "New", tone: "new" },
+    discountBadge: "-28%",
+    inStock: true,
+    productType: "Kid Clothing",
+    vendor: "KidXtore",
+    reviewCount: 1,
+    sold: 312,
+    code: "CLO09",
+    categories: ["4-6 Years", "6-8 Years", "Jackets", "Winter Wear"],
+    offers: [
+      { icon: "shipping", label: "Free shipping orders from $199" },
+      { icon: "safe", label: "100% safe for kid" },
+      { icon: "membership", label: "Membership offers 10%, 15%, 20% off" },
+      { icon: "returns", label: "Returns within 30 days" },
+    ],
+    description:
+      "A warm, quilted jacket designed to keep kids cozy in cold weather.",
+  },
 ];
 
 export const Categories: Category[] = [
@@ -274,41 +481,66 @@ export const SocialLinks = [
   { Icon: FaYoutube, label: "YouTube" },
 ];
 
-export const POSTS: Post[] = [
+export const BRAND_LOGO_BASE =
+  "https://bw-kidxtore.bzotech.com/wp-content/uploads/2023/07/home4-brand-";
+
+export const BRAND_NAMES = [
+  "Simba",
+  "Merries",
+  "Fatz Baby",
+  "Chaang",
+  "Vinamilk",
+  "Moony",
+  "Aptakid",
+  "Philips Avent",
+  "Rototo Bebe",
+  "Bledina",
+  "Enfamil",
+  "Rototo Bebe",
+];
+
+export const BRANDS: Brand[] = BRAND_NAMES.map((name, i) => ({
+  id: `b${i + 1}`,
+  name,
+  logo: `${BRAND_LOGO_BASE}${i + 1}.png`,
+}));
+
+const NEWS_IMAGE_1 =
+  "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&q=80";
+const NEWS_IMAGE_2 =
+  "https://images.unsplash.com/photo-1576765608866-5b51046452be?w=600&q=80";
+const NEWS_IMAGE_3 =
+  "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&q=80";
+const NEWS_IMAGE_4 =
+  "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&q=80";
+
+export const LATEST_NEWS: NewsPost[] = [
   {
-    id: "p1",
+    id: "news1",
     title: "Mi risus et semper conubia sem facilisis",
-    image:
-      "https://bw-kidxtore.bzotech.com/wp-content/uploads/2023/04/blog-1.jpg",
+    image: NEWS_IMAGE_1,
     author: "admin",
     comments: 0,
-    href: "#",
   },
   {
-    id: "p2",
+    id: "news2",
     title: "Luctus enim hac mus mauris erat risus elit",
-    image:
-      "https://bw-kidxtore.bzotech.com/wp-content/uploads/2023/04/blog-14.jpg",
+    image: NEWS_IMAGE_2,
     author: "admin",
     comments: 0,
-    href: "#",
   },
   {
-    id: "p3",
+    id: "news3",
     title: "Purus mus litora ante ad amet erat taciti cras",
-    image:
-      "https://bw-kidxtore.bzotech.com/wp-content/uploads/2023/04/blog-7.jpg",
+    image: NEWS_IMAGE_3,
     author: "admin",
     comments: 0,
-    href: "#",
   },
   {
-    id: "p4",
+    id: "news4",
     title: "Tellus pharetra lacus ligula fusce cum eu potenti",
-    image:
-      "https://bw-kidxtore.bzotech.com/wp-content/uploads/2023/04/blog-1.jpg",
+    image: NEWS_IMAGE_4,
     author: "admin",
     comments: 0,
-    href: "#",
   },
 ];
