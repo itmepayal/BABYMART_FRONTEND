@@ -5,7 +5,7 @@ import { ProductCard } from "@/components/product/ProductCard";
 import { Product } from "@/types/product";
 import { ViewModal } from "@/components/product/ViewModal";
 import { CartDrawer, type CartItem } from "@/components/product/Cartdrawer";
-import { SectionHeader } from "@/components/common/SectionHeader";
+import { FilterHeader } from "@/components/common/SectionHeader";
 import { Products, PROMO_BANNER } from "@/lib/constants";
 
 const FILTERS = ["All", "Kid Clothing", "Feeding Set", "Kid Toys", "Strollers"];
@@ -95,7 +95,7 @@ export function NewArrivals({
 
   return (
     <section>
-      <SectionHeader title="New Arrivals" showLink={false}>
+      <FilterHeader title="New Arrivals" showLink={false}>
         <nav
           aria-label="Filter new arrivals by category"
           className="flex flex-wrap items-center gap-1.5 sm:gap-2"
@@ -130,7 +130,7 @@ export function NewArrivals({
             );
           })}
         </nav>
-      </SectionHeader>
+      </FilterHeader>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-[400px_1fr]">
         <a

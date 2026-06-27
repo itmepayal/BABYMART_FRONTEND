@@ -18,7 +18,6 @@ export const Feature = () => {
           const Icon = feature.icon;
           const isLastInRow = (index + 1) % 2 === 0;
           const isLastOverall = index === Features.length - 1;
-
           return (
             <div
               key={feature.id}
@@ -42,7 +41,7 @@ export const Feature = () => {
               </div>
 
               <div className="min-w-0">
-                <p className="font-(--title_typo-font-family) text-lg leading-tight text-(--title_typo-color) transition-colors duration-300 ease-out group-hover:text-main">
+                <p className="font-(--title_typo-font-family) text-base sm:text-lg leading-tight text-(--title_typo-color) transition-colors duration-300 ease-out group-hover:text-main">
                   {feature.title}
                 </p>
 
