@@ -68,7 +68,7 @@ export function FlashSale() {
 
   return (
     <>
-      <SectionHeader title="Flash Sale">
+      <SectionHeader title="Flash Sale" href="/product-category/market">
         <div className="sm:flex flex-wrap items-center gap-1 sm:gap-1.5 hidden">
           {[
             { v: days, label: "d" },
