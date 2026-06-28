@@ -46,7 +46,7 @@ function BlogCard({ post }: { post: (typeof LATEST_NEWS)[number] }) {
 
       <h3 className="mt-3 text-base font-semibold leading-snug text-(--title_typo-color) sm:text-lg">
         <a
-          href={post.href ?? "#"}
+          href={`/blog/${post.id}`}
           className="transition-colors duration-200 hover:text-main line-clamp-1"
         >
           {post.title}
