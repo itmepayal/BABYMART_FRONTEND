@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito, Baloo_2 } from "next/font/google";
 import "./globals.css";
+import Layout from "@/components/layout";
 
 const nunito = Nunito({
   variable: "--font-nunito",
@@ -45,7 +46,7 @@ export default function RootLayout({
         className="min-h-full flex flex-col bg-white"
         style={{ fontFamily: "var(--font-nunito)" }}
       >
-        {children}
+        <Layout>{children}</Layout>
       </body>
     </html>
   );

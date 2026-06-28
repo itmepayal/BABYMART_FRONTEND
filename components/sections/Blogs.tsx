@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { MessageCircle, UserRound } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { SectionHeader } from "@/components/common/SectionHeader";
@@ -55,12 +56,21 @@ function BlogCard({ post }: { post: (typeof LATEST_NEWS)[number] }) {
       <div className="mt-2 flex items-center gap-3 text-sm text-(--body_typo-color)">
         <span className="flex items-center gap-1.5">
           <UserRound size={14} />
-          By: {post.author}
+          By:
+          <Link
+            href={`/blog/author/${post.author.toLowerCase()}`}
+            className="transition-colors hover:text-main"
+          >
+            {post.author}
+          </Link>
         </span>
-        <span className="flex items-center gap-1.5">
+        <Link
+          href={`/blog/${post.id}`}
+          className="flex items-center gap-1.5 transition-colors hover:text-main"
+        >
           <MessageCircle size={14} />
           {post.comments} Comments
-        </span>
+        </Link>
       </div>
     </article>
   );

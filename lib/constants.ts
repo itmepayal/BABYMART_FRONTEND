@@ -23,12 +23,30 @@ export const categories = [
 ];
 
 export const navLinks = [
-  "Home",
-  "Shop",
-  "Collections",
-  "Blog",
-  "Pages",
-  "Sale",
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "Shop",
+    href: "/shop",
+  },
+  {
+    label: "Collections",
+    href: "/collections",
+  },
+  {
+    label: "Blog",
+    href: "/blog",
+  },
+  {
+    label: "Pages",
+    href: "/pages",
+  },
+  {
+    label: "Sale",
+    href: "/sale",
+  },
 ];
 
 export const Features = [

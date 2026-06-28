@@ -3,9 +3,14 @@
 import { Menu, ChevronDown, Phone } from "lucide-react";
 import { CategoriesMenu } from "@/components/layout/header/CategoriesMenu";
 
+type NavLink = {
+  label: string;
+  href: string;
+};
+
 interface NavbarProps {
   categories: string[];
-  navLinks: string[];
+  navLinks: NavLink[];
   showCategoryMenu: boolean;
   onCategoryMouseEnter: () => void;
   onCategoryMouseLeave: () => void;
@@ -38,11 +43,11 @@ export const Navbar = ({
         <div className="flex flex-1 justify-center overflow-x-auto">
           {navLinks.map((link) => (
             <a
-              key={link}
-              href="#"
+              key={link.href}
+              href={link.href}
               className="text-white text-sm font-bold px-3.5 xl:px-5.5 py-3.75 hover:bg-black/10 transition-colors whitespace-nowrap"
             >
-              {link}
+              {link.label}
             </a>
           ))}
         </div>

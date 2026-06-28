@@ -1,10 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { HiOutlineDocumentMagnifyingGlass } from "react-icons/hi2";
+import { useParams } from "next/navigation";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Pagination } from "@/components/common/Pagination";
-import { BlogEmptyState } from "@/components/blog/BlogEmptyState";
 import { BlogPostCard } from "@/components/blog/BlogPostCard";
 import { BlogSidebar } from "@/components/blog/BlogSidebar";
 import { NewsletterBanner } from "@/components/blog/detail/NewsletterBanner";
@@ -13,18 +12,40 @@ import {
   categories,
   recentPosts,
   tags,
+  slugToLabel,
   POSTS_PER_PAGE,
 } from "@/data/blog";
+import { BlogEmptyState } from "@/components/blog/BlogEmptyState";
+import { HiOutlineDocumentMagnifyingGlass } from "react-icons/hi2";
 
-const Blog = () => {
+const TagPage = () => {
+  const params = useParams();
+
+  const rawSlug = Array.isArray(params?.slug)
+    ? params.slug[0]
+    : ((params?.slug as string) ?? "");
+
+  const tagLabel = slugToLabel(rawSlug);
+
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.max(1, Math.ceil(allPosts.length / POSTS_PER_PAGE));
+  const filteredPosts = useMemo(
+    () =>
+      allPosts.filter((post) =>
+        post.tags.some((tag) => tag.toLowerCase() === tagLabel.toLowerCase()),
+      ),
+    [tagLabel],
+  );
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredPosts.length / POSTS_PER_PAGE),
+  );
 
   const paginatedPosts = useMemo(() => {
     const start = (currentPage - 1) * POSTS_PER_PAGE;
-    return allPosts.slice(start, start + POSTS_PER_PAGE);
-  }, [currentPage]);
+    return filteredPosts.slice(start, start + POSTS_PER_PAGE);
+  }, [currentPage, filteredPosts]);
 
   const goToPage = (page: number) => {
     setCurrentPage(Math.min(Math.max(page, 1), totalPages));
@@ -34,8 +55,12 @@ const Blog = () => {
   return (
     <>
       <Breadcrumb
-        title="Blog"
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Blog" }]}
+        title={tagLabel}
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Blog", href: "/blog" },
+          { label: tagLabel },
+        ]}
       />
 
       <div className="mx-auto max-w-330 px-4 sm:px-0 py-6 sm:py-8">
@@ -48,11 +73,11 @@ const Blog = () => {
             ) : (
               <BlogEmptyState
                 icon={HiOutlineDocumentMagnifyingGlass}
-                title="No posts yet"
-                description="There are no blog posts to show right now. Check back soon for new content."
+                title="No posts found"
+                description={`We couldn't find any posts tagged "${tagLabel}".`}
+                action={{ label: "Browse all posts", href: "/blog" }}
               />
             )}
-
             {totalPages > 1 && (
               <Pagination
                 currentPage={currentPage}
@@ -61,7 +86,6 @@ const Blog = () => {
               />
             )}
           </div>
-
           <BlogSidebar
             categories={categories}
             recentPosts={recentPosts}
@@ -74,4 +98,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default TagPage;

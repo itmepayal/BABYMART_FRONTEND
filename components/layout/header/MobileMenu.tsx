@@ -11,11 +11,16 @@ import {
   X,
 } from "lucide-react";
 
+type NavLink = {
+  label: string;
+  href: string;
+};
+
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   categories: string[];
-  navLinks: string[];
+  navLinks: NavLink[];
   wishlistCount: number;
   isWishlisted: boolean;
   onOpenLogin: () => void;
@@ -36,12 +41,8 @@ export const MobileMenu = ({
 
   return (
     <div className="lg:hidden fixed inset-0 z-200">
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
-
-      {/* Drawer */}
       <div className="absolute left-0 top-0 h-full w-[82%] max-w-85 bg-white shadow-2xl flex flex-col overflow-y-auto">
-        {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-line shrink-0">
           <span className="font-bold text-lg">
             <span style={{ color: "var(--teal)" }}>Kid</span>
@@ -61,11 +62,11 @@ export const MobileMenu = ({
         <div className="flex flex-col py-2 border-b border-line">
           {navLinks.map((link) => (
             <a
-              key={link}
-              href="#"
+              key={link.href}
+              href={link.href}
               className="text-ink text-[15px] font-bold px-5 py-3 hover:bg-teal-light hover:text-teal-dark transition-colors"
             >
-              {link}
+              {link.label}
             </a>
           ))}
         </div>
@@ -160,8 +161,6 @@ export const MobileMenu = ({
             )}
           </a>
         </div>
-
-        {/* Footer */}
         <div className="px-5 py-4 mt-auto">
           <a
             href="tel:+13083264120"
