@@ -11,7 +11,7 @@ import "swiper/css";
 export function Blogs() {
   return (
     <section className="overflow-x-hidden">
-      <SectionHeader title="Latest News" href="#" linkLabel="See More" />
+      <SectionHeader title="Latest News" href="blog" linkLabel="See More" />
 
       <div className="sm:hidden">
         <Swiper slidesPerView={1.15} spaceBetween={16}>
