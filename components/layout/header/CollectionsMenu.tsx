@@ -242,8 +242,7 @@ export const CollectionsMenu = ({
         <DropdownMenuTrigger asChild>
           <button
             type="button"
-            className={`flex items-center gap-1 text-white text-sm font-bold px-3.5 xl:px-5.5 py-3.75 whitespace-nowrap ${triggerClassName}`}
-            style={{ backgroundColor: "#fbbf24" }}
+            className={`flex items-center gap-1 text-white text-sm font-bold px-3.5 xl:px-5.5 py-3.75 whitespace-nowrap`}
           >
             {label}
             <ChevronDown size={14} strokeWidth={2} />

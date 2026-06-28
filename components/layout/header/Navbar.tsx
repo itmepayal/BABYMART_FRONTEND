@@ -3,6 +3,7 @@
 import { Menu, ChevronDown, Phone } from "lucide-react";
 import { CategoriesMenu } from "@/components/layout/header/CategoriesMenu";
 import { CollectionsMenu } from "@/components/layout/header/CollectionsMenu";
+import { SaleMenu } from "@/components/layout/header/SaleMenu";
 
 type NavLink = {
   label: string;
@@ -62,6 +63,10 @@ export const Navbar = ({
                   label={link.label}
                 />
               );
+            }
+
+            if (link.label === "Sale") {
+              return <SaleMenu key={link.href} label={link.label} />;
             }
 
             return (
