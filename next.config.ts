@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "bw-kidxtore.bzotech.com",
         pathname: "/wp-content/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
+      },
     ],
   },
 };

@@ -2,23 +2,35 @@
 
 import { Menu, ChevronDown, Phone } from "lucide-react";
 import { CategoriesMenu } from "@/components/layout/header/CategoriesMenu";
+import { CollectionsMenu } from "@/components/layout/header/CollectionsMenu";
 
 type NavLink = {
   label: string;
   href: string;
 };
 
+type Collection = {
+  label: string;
+  href: string;
+  image?: string;
+};
+
 interface NavbarProps {
   categories: string[];
   navLinks: NavLink[];
+  collections?: Collection[];
   showCategoryMenu: boolean;
   onCategoryMouseEnter: () => void;
   onCategoryMouseLeave: () => void;
 }
 
+const navLinkClassName =
+  "text-white text-sm font-bold px-3.5 xl:px-5.5 py-3.75 hover:bg-black/10 transition-colors whitespace-nowrap";
+
 export const Navbar = ({
   categories,
   navLinks,
+  collections,
   showCategoryMenu,
   onCategoryMouseEnter,
   onCategoryMouseLeave,
@@ -41,15 +53,23 @@ export const Navbar = ({
         </div>
 
         <div className="flex flex-1 justify-center overflow-x-auto">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-white text-sm font-bold px-3.5 xl:px-5.5 py-3.75 hover:bg-black/10 transition-colors whitespace-nowrap"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            if (link.label === "Collections") {
+              return (
+                <CollectionsMenu
+                  key={link.href}
+                  collections={collections}
+                  label={link.label}
+                />
+              );
+            }
+
+            return (
+              <a key={link.href} href={link.href} className={navLinkClassName}>
+                {link.label}
+              </a>
+            );
+          })}
         </div>
 
         <div className="hidden xl:flex items-center gap-2 ml-auto pl-12 shrink-0 text-white text-[13px] font-bold">

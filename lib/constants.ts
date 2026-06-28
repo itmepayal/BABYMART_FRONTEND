@@ -36,18 +36,22 @@ export const navLinks = [
     href: "/collections",
   },
   {
+    label: "Sale",
+    href: "/sale",
+  },
+  {
     label: "Blog",
     href: "/blog",
   },
   {
-    label: "Pages",
-    href: "/pages",
+    label: "About Us",
+    href: "/about",
   },
   {
-    label: "Sale",
-    href: "/sale",
+    label: "Contact Us",
+    href: "/contact",
   },
-];
+] as const;
 
 export const Features = [
   {

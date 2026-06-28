@@ -7,14 +7,45 @@ export function ProductCard({
   product,
   onQuickView,
   onAddToCart,
+  showQuickView = true,
+  showWishlist = true,
+  showAddToCart = true,
 }: {
   product: Product;
-  onQuickView: (product: Product) => void;
-  onAddToCart: (product: Product) => void;
+  onQuickView?: (product: Product) => void;
+  onAddToCart?: (product: Product) => void;
+  showQuickView?: boolean;
+  showWishlist?: boolean;
+  showAddToCart?: boolean;
 }) {
   const router = useRouter();
+
+  const actions = [
+    {
+      Icon: Eye,
+      label: "Quick view",
+      onClick: () => onQuickView?.(product),
+      show: showQuickView,
+    },
+    {
+      Icon: Heart,
+      label: "Add to wishlist",
+      onClick: () => router.push("/wishlist"),
+      show: showWishlist,
+    },
+    {
+      Icon: ShoppingCart,
+      label: "Add to cart",
+      onClick: () => onAddToCart?.(product),
+      show: showAddToCart,
+    },
+  ].filter((action) => action.show);
+
   return (
-    <div className="group w-full shrink-0 snap-start px-0">
+    <div
+      className="group w-full shrink-0 snap-start px-0"
+      onClick={() => router.push(`/product/${product.id}`)}
+    >
       <div className="relative aspect-square overflow-hidden rounded bg-main-mix-bg/40">
         <div className="absolute left-2 top-2 z-10 flex flex-col gap-1.5">
           {product.badge && (
@@ -36,42 +67,31 @@ export function ProductCard({
           className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
         />
 
-        <div className="absolute inset-0 flex items-center justify-center gap-2 bg-ink/0 opacity-0 transition-all duration-300 ease-out group-hover:bg-ink/10 group-hover:opacity-100">
-          {[
-            {
-              Icon: Eye,
-              label: "Quick view",
-              onClick: () => onQuickView(product),
-            },
-            {
-              Icon: Heart,
-              label: "Add to wishlist",
-              onClick: () => router.push("/wishlist"),
-            },
-            {
-              Icon: ShoppingCart,
-              label: "Add to cart",
-              onClick: () => onAddToCart(product),
-            },
-          ].map(({ Icon, label, onClick }, i) => (
-            <button
-              key={label}
-              type="button"
-              aria-label={label}
-              onClick={onClick}
-              style={{ transitionDelay: `${i * 60}ms` }}
-              className="
-                flex h-9 w-9 -translate-y-2 items-center justify-center
-                rounded bg-white text-ink opacity-0 shadow-md
-                transition-all duration-300 ease-out
-                hover:bg-main hover:text-white
-                group-hover:translate-y-0 group-hover:opacity-100
-              "
-            >
-              <Icon size={16} strokeWidth={2} />
-            </button>
-          ))}
-        </div>
+        {actions.length > 0 && (
+          <div className="absolute inset-0 flex items-center justify-center gap-2 bg-ink/0 opacity-0 transition-all duration-300 ease-out group-hover:bg-ink/10 group-hover:opacity-100">
+            {actions.map(({ Icon, label, onClick }, i) => (
+              <button
+                key={label}
+                type="button"
+                aria-label={label}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onClick();
+                }}
+                style={{ transitionDelay: `${i * 60}ms` }}
+                className="
+                  flex h-9 w-9 -translate-y-2 items-center justify-center
+                  rounded bg-white text-ink opacity-0 shadow-md
+                  transition-all duration-300 ease-out
+                  hover:bg-main hover:text-white
+                  group-hover:translate-y-0 group-hover:opacity-100
+                "
+              >
+                <Icon size={16} strokeWidth={2} />
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="mt-3">
