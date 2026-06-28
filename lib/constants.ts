@@ -51,7 +51,7 @@ export const navLinks = [
     label: "Contact Us",
     href: "/contact",
   },
-] as const;
+];
 
 export const Features = [
   {
