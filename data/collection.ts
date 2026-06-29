@@ -1,4 +1,4 @@
-import { Collection } from "@/types/collection";
+import { Collection, SortOption } from "@/types/collection";
 
 export const COLLECTIONS_PER_PAGE = 16;
 
@@ -211,3 +211,38 @@ export const allCollections: Collection[] = [
     tint: "bg-pink-50",
   },
 ];
+
+export const sortOptions: { value: SortOption; label: string }[] = [
+  { value: "default", label: "Default sorting" },
+  { value: "price-asc", label: "Price: low to high" },
+  { value: "price-desc", label: "Price: high to low" },
+  { value: "rating", label: "Highest rated" },
+];
+
+export const collectionCategoryMap: Record<string, string[]> = {
+  "baby-supplies": ["Feeding Set", "Bibs", "Diaper", "Bath"],
+  "baby-collection": ["Feeding Set", "Bibs", "Diaper", "Bath", "Accessories"],
+  boy: ["Fashion Kid", "Toys"],
+  girl: ["Fashion Kid", "Toys"],
+  "boy-fashion": ["Fashion Kid"],
+  "girl-fashion": ["Fashion Kid"],
+  "for-boys": ["Fashion Kid", "Toy & Game"],
+  "for-girls": ["Fashion Kid", "Toy & Game"],
+  "childrens-cars": ["Carrier Toys", "Toys"],
+  "control-toys": ["Smart Toys"],
+  diapering: ["Diaper"],
+  "education-toys": ["Jigsaw Puzzle", "Smart Toys"],
+  feeding: ["Feeding Set"],
+  "infant-toys": ["Toys", "Carrier Toys"],
+  "musical-toys": ["Smart Toys", "Toys"],
+  "outdoor-toys": ["Sandbox Toys", "Carrier Toys"],
+  "plush-toys": ["Stuffed Toys"],
+  puzzles: ["Jigsaw Puzzle"],
+  "ride-on-toys": ["Carrier Toys"],
+  "school-supplies": ["Jigsaw Puzzle"],
+  "sports-toys": ["Sandbox Toys"],
+  stationery: [],
+  "stuffed-animals": ["Stuffed Toys"],
+  "toddler-toys": ["Toys", "Toy & Game"],
+  "wooden-toys": ["Wooden Toys"],
+};

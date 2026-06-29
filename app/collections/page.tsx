@@ -9,14 +9,12 @@ import { NewsletterBanner } from "@/components/common/NewsletterBanner";
 import { CollectionCard } from "@/components/collections/CollectionCard";
 import { allCollections, COLLECTIONS_PER_PAGE } from "@/data/collection";
 
-const Collections = () => {
+const CollectionPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
-
   const totalPages = Math.max(
     1,
     Math.ceil(allCollections.length / COLLECTIONS_PER_PAGE),
   );
-
   const { paginatedCollections, rangeStart, rangeEnd } = useMemo(() => {
     const start = (currentPage - 1) * COLLECTIONS_PER_PAGE;
     const end = Math.min(start + COLLECTIONS_PER_PAGE, allCollections.length);
@@ -85,7 +83,6 @@ const Collections = () => {
               />
             </div>
           )}
-
           <NewsletterBanner />
         </div>
       </div>
@@ -93,4 +90,4 @@ const Collections = () => {
   );
 };
 
-export default Collections;
+export default CollectionPage;

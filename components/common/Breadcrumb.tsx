@@ -29,7 +29,7 @@ export const Breadcrumb = ({
         priority
       />
       <div className="relative z-10 mx-auto flex h-full max-w-330 flex-col items-center justify-center gap-1.5 px-4 text-center sm:gap-2">
-        <h1 className="text-2xl font-extrabold tracking-tight text-black sm:text-4xl md:text-5xl lg:text-6xl">
+        <h1 className="text-2xl font-semibold tracking-wide text-black sm:text-4xl md:text-5xl lg:text-6xl">
           {title}
         </h1>
         <nav aria-label="Breadcrumb">

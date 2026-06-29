@@ -1,19 +1,6 @@
 import Link from "next/link";
-import { type IconType } from "react-icons";
+import { EmptyStateProps } from "@/types/empty";
 import { HiOutlineDocumentMagnifyingGlass } from "react-icons/hi2";
-
-type EmptyStateAction = {
-  label: string;
-  href: string;
-};
-
-type EmptyStateProps = {
-  icon?: IconType;
-  title: string;
-  description?: string;
-  action?: EmptyStateAction;
-  className?: string;
-};
 
 export const EmptyState = ({
   icon: Icon = HiOutlineDocumentMagnifyingGlass,
@@ -24,16 +11,18 @@ export const EmptyState = ({
 }: EmptyStateProps) => {
   return (
     <div
-      className={`w-225 flex flex-col items-center justify-center rounded-2xl border border-dashed border-gray-200 bg-gray-50/60 px-6 py-16 text-center sm:py-20 ${className}`}
+      className={`mx-auto flex w-full max-w-225 flex-col items-center justify-center rounded-2xl border border-dashed border-gray-200 bg-gray-50/60 px-4 py-12 text-center sm:px-6 sm:py-16 md:py-20 ${className}`}
     >
-      <div className="relative mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-gray-100">
-        <Icon className="h-7 w-7 text-coral" />
+      <div className="relative mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-gray-100 sm:mb-5 sm:h-16 sm:w-16">
+        <Icon className="h-5 w-5 text-coral sm:h-7 sm:w-7" />
       </div>
 
-      <h3 className="text-xl font-bold text-black sm:text-2xl">{title}</h3>
+      <h3 className="text-lg font-bold text-black sm:text-xl md:text-2xl">
+        {title}
+      </h3>
 
       {description && (
-        <p className="mt-3 max-w-sm text-sm leading-relaxed text-gray-600 sm:text-base">
+        <p className="mt-2 max-w-xs text-sm leading-relaxed text-gray-600 sm:mt-3 sm:max-w-sm sm:text-base">
           {description}
         </p>
       )}
@@ -41,7 +30,7 @@ export const EmptyState = ({
       {action && (
         <Link
           href={action.href}
-          className="mt-6 inline-flex items-center rounded-full bg-coral px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-colors hover:bg-coral/90"
+          className="mt-5 inline-flex items-center rounded-full bg-coral px-5 py-2 text-xs font-bold tracking-wide text-white transition-colors hover:bg-coral/90 sm:mt-6 sm:px-6 sm:py-2.5 sm:text-sm"
         >
           {action.label.toUpperCase()}
         </Link>

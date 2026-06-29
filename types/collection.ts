@@ -8,3 +8,9 @@ export interface Collection {
 export interface CollectionLinkCardProps {
   collection: Collection;
 }
+
+export type SortOption = "default" | "price-asc" | "price-desc" | "rating";
+
+export interface CollectionDetailPageProps {
+  params: Promise<{ slug: string }>;
+}
