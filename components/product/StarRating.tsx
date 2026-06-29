@@ -1,3 +1,5 @@
+import { Star } from "lucide-react";
+
 export function StarRating({
   rating = 0,
   reviews = 0,
@@ -20,3 +22,23 @@ export function StarRating({
     </div>
   );
 }
+
+export const Rating = ({
+  rating,
+  size = 16,
+}: {
+  rating: number;
+  size?: number;
+}) => (
+  <span className="flex items-center gap-0.5">
+    {Array.from({ length: 5 }).map((_, i) => (
+      <Star
+        key={i}
+        size={size}
+        className={
+          i < rating ? "fill-sun text-sun" : "fill-transparent text-border"
+        }
+      />
+    ))}
+  </span>
+);

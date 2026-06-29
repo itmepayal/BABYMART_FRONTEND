@@ -8,6 +8,8 @@ export interface ProductOffer {
   label: string;
 }
 
+export type SortOption = "default" | "price-asc" | "price-desc" | "rating";
+
 export interface Product {
   id: string;
   title: string;

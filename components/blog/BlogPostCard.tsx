@@ -5,25 +5,11 @@ import {
   HiOutlineCalendar,
   HiOutlineChatBubbleLeft,
 } from "react-icons/hi2";
-
-export type BlogPost = {
-  slug: string;
-  image: string;
-  tags: string[];
-  title: string;
-  author: string;
-  date: string;
-  commentsCount: number;
-  excerpt: string;
-};
-
-type BlogPostCardProps = {
-  post: BlogPost;
-};
+import { BlogPostCardProps } from "@/types/blog";
 
 export const BlogPostCard = ({ post }: BlogPostCardProps) => {
   return (
-    <article className="pb-6">
+    <article>
       <Link
         href={`/blog/${post.slug}`}
         className="block overflow-hidden rounded"
@@ -86,7 +72,7 @@ export const BlogPostCard = ({ post }: BlogPostCardProps) => {
 
       <Link
         href={`/blog/${post.slug}`}
-        className="mt-5 inline-flex items-center rounded-full bg-coral px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-colors hover:bg-coral"
+        className="mt-5 inline-flex items-center rounded-full bg-coral px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-colors hover:bg-coral/90"
       >
         READ MORE
       </Link>

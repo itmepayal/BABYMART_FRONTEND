@@ -23,7 +23,7 @@ export const CollectionCard = ({ collection }: CollectionLinkCardProps) => {
           className="relative z-10 object-contain p-4 sm:p-5 md:p-6 lg:p-7 transition-transform duration-500 ease-out group-hover:scale-105"
         />
 
-        <span className="absolute inset-x-0 bottom-0 h-[3px] bg-gradient-to-r from-transparent via-white/0 to-transparent" />
+        <span className="absolute inset-x-0 bottom-0 h-0.75 bg-linear-to-r from-transparent via-white/0 to-transparent" />
       </div>
 
       <div className="flex flex-1 items-center justify-between gap-2 border-t border-gray-100 px-2.5 py-2.5 sm:gap-3 sm:px-4 sm:py-3.5">

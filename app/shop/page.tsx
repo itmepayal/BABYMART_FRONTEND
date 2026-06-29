@@ -1,35 +1,21 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { List, Grid2x2, Columns3 } from "lucide-react";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Pagination } from "@/components/common/Pagination";
 import { ProductCard } from "@/components/product/ProductCard";
 import { ViewModal } from "@/components/product/ViewModal";
 import { CartDrawer, type CartItem } from "@/components/product/Cartdrawer";
-import { NewsletterBanner } from "@/components/blog/detail/NewsletterBanner";
-import BlogEmptyState from "@/components/blog/BlogEmptyState";
-import type { Product } from "@/types/product";
-import {
-  allProducts,
-  PRICE_MIN,
-  PRICE_MAX,
-  PRODUCTS_PER_PAGE,
-} from "@/data/product";
-
-type SortOption = "default" | "price-asc" | "price-desc" | "rating";
-
-const sortOptions: { value: SortOption; label: string }[] = [
-  { value: "default", label: "Default sorting" },
-  { value: "price-asc", label: "Price: low to high" },
-  { value: "price-desc", label: "Price: high to low" },
-  { value: "rating", label: "Highest rated" },
-];
+import { NewsletterBanner } from "@/components/common/NewsletterBanner";
+import { EmptyState } from "@/components/common/EmptyState";
+import { ListToolbar, type ViewMode } from "@/components/common/ListToolbar";
+import type { Product, SortOption } from "@/types/product";
+import { allProducts, PRODUCTS_PER_PAGE, sortOptions } from "@/data/product";
 
 const ShopPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortBy, setSortBy] = useState<SortOption>("default");
-  const [view, setView] = useState<"list" | "grid" | "compact">("grid");
+  const [view, setView] = useState<ViewMode>("grid");
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(
     null,
   );
@@ -76,9 +62,14 @@ const ShopPage = () => {
     Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE),
   );
 
-  const paginatedProducts = useMemo(() => {
+  const { paginatedProducts, rangeStart, rangeEnd } = useMemo(() => {
     const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
-    return filteredProducts.slice(start, start + PRODUCTS_PER_PAGE);
+    const end = Math.min(start + PRODUCTS_PER_PAGE, filteredProducts.length);
+    return {
+      paginatedProducts: filteredProducts.slice(start, end),
+      rangeStart: filteredProducts.length === 0 ? 0 : start + 1,
+      rangeEnd: end,
+    };
   }, [currentPage, filteredProducts]);
 
   const goToPage = (page: number) => {
@@ -88,10 +79,10 @@ const ShopPage = () => {
 
   const gridColsClass =
     view === "grid"
-      ? "grid-cols-3 sm:grid-cols-5"
+      ? "grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
       : view === "compact"
-        ? "grid-cols-4 sm:grid-cols-6"
-        : "grid-cols-2 sm:grid-cols-4";
+        ? "grid-cols-2 xs:grid-cols-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6"
+        : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4";
 
   return (
     <>
@@ -100,99 +91,55 @@ const ShopPage = () => {
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Shop" }]}
       />
 
-      <div className="mx-auto max-w-330 px-4 py-10 sm:py-14">
-        <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-gray-200 bg-white px-4 py-3 shadow-sm">
-          <div className="flex items-center gap-2">
-            <select
-              value={sortBy}
-              onChange={(e) => {
-                setSortBy(e.target.value as SortOption);
-                setCurrentPage(1);
-              }}
-              className="rounded border border-gray-200 px-3 py-1.5 text-sm text-gray-700 focus:border-main focus:outline-none"
-            >
-              {sortOptions.map((opt) => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <p className="text-sm text-gray-500">
-              Showing{" "}
-              <span className="font-medium text-gray-700">
-                {paginatedProducts.length}
-              </span>{" "}
-              of{" "}
-              <span className="font-medium text-gray-700">
-                {filteredProducts.length}
-              </span>{" "}
-              results
-            </p>
-
-            <div className="flex items-center gap-1">
-              {(
-                [
-                  { key: "list", Icon: List, label: "List view" },
-                  { key: "grid", Icon: Grid2x2, label: "Grid view" },
-                  { key: "compact", Icon: Columns3, label: "Compact view" },
-                ] as const
-              ).map(({ key, Icon, label }) => (
-                <button
-                  key={key}
-                  type="button"
-                  onClick={() => setView(key)}
-                  aria-label={label}
-                  aria-pressed={view === key}
-                  className={`flex h-8 w-8 items-center justify-center rounded transition-colors ${
-                    view === key
-                      ? "bg-main text-white"
-                      : "text-gray-500 hover:bg-orange-50"
-                  }`}
-                >
-                  <Icon className="h-4 w-4" />
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {paginatedProducts.length > 0 ? (
-          <div
-            className={`grid items-start gap-x-5 gap-y-6 ${gridColsClass}`}
-            style={{ minHeight: "400px" }}
-          >
-            {paginatedProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onQuickView={setQuickViewProduct}
-                onAddToCart={handleAddToCart}
+      <div className="mx-auto max-w-330 px-3 py-6 sm:px-4 sm:py-8 md:px-6 lg:px-8 lg:py-10">
+        <div className="flex flex-col gap-6 sm:gap-10 md:gap-12 lg:gap-14">
+          {paginatedProducts.length > 0 ? (
+            <>
+              <ListToolbar
+                sortBy={sortBy}
+                sortOptions={sortOptions}
+                onSortChange={(value) => {
+                  setSortBy(value);
+                  setCurrentPage(1);
+                }}
+                rangeStart={rangeStart}
+                rangeEnd={rangeEnd}
+                total={filteredProducts.length}
+                view={view}
+                onViewChange={setView}
               />
-            ))}
-          </div>
-        ) : (
-          <BlogEmptyState
-            title="No products found"
-            description="No products available right now."
-          />
-        )}
 
-        {totalPages > 1 && (
-          <div className="mt-10">
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={goToPage}
+              <div
+                className={`grid items-start gap-2 xs:gap-3 sm:gap-4 md:gap-5 ${gridColsClass}`}
+              >
+                {paginatedProducts.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    onQuickView={setQuickViewProduct}
+                    onAddToCart={handleAddToCart}
+                  />
+                ))}
+              </div>
+            </>
+          ) : (
+            <EmptyState
+              title="No products found"
+              description="No products available right now."
             />
-          </div>
-        )}
-      </div>
+          )}
 
-      <div className="mx-auto max-w-330 w-full px-4 pb-10">
-        <NewsletterBanner />
+          {totalPages > 1 && (
+            <div className="flex justify-center overflow-x-auto border-t border-gray-100 pt-6 sm:pt-8">
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={goToPage}
+              />
+            </div>
+          )}
+          <NewsletterBanner />
+        </div>
       </div>
 
       {quickViewProduct && (

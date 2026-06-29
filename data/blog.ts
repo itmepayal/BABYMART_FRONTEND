@@ -1,6 +1,6 @@
-import type { BlogPost } from "@/components/blog/BlogPostCard";
 import type { Category } from "@/components/blog/widget/Categories";
 import type { RecentPost } from "@/components/blog/widget/RecentPosts";
+import { BlogPost } from "@/types/blog";
 
 export const allPosts: BlogPost[] = [
   {
@@ -194,8 +194,6 @@ export const categories: Category[] = [
   { label: "Smart Toys", href: "/blog/category/smart-toys" },
 ];
 
-// ─── Sidebar: Recent Posts ─────────────────────────────────────────────────────
-
 export const recentPosts: RecentPost[] = [
   {
     slug: "ut-wisi-enim-ad-minim-veniam",
@@ -247,3 +245,32 @@ export const slugToLabel = (slug: string): string =>
     .join(" ");
 
 export const POSTS_PER_PAGE = 2;
+
+export const post = {
+  slug: "luctus-enim-hac-mus-mauris-erat-risus-elit",
+  title: "Luctus Enim Hac Mus Mauris Erat Risus Elit",
+  author: "admin",
+  date: "May 9, 2025",
+  commentsCount: 2,
+  heroImage:
+    "https://bw-kidxtore.bzotech.com/wp-content/uploads/2023/04/blog-1.jpg",
+  breadcrumbs: [
+    { label: "Home", href: "/" },
+    { label: "Children Care", href: "/blog/category/children-care" },
+    { label: "New Collection", href: "/blog/category/new-collection" },
+    { label: "Luctus enim hac mus mauris erat risus elit" },
+  ],
+  intro:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar turpis non commodo sodales. Proin vel egestas erat. Vestibulum facilisis nibh erat, sit amet commodo magna erat congue. Quisque imperdiet de lorus erat at vehicula.",
+  body1:
+    "Purus, mus litore enim erat nec turpis dignissim sociis sit lacinia. Sociis sit amet quisque lobortis dignissim, sociis sit lacinia sem laoreet vivamus rutrum gravida rhoncus magnis a varius. Proin vulputate est tellus accumsan parturient, augue cras nam turpis hendrerit duis litora ligula pharetra curae mi risus et semper conubia sem facilisis.",
+  quote:
+    "If you're #toxykids include a younger-looking, glowing complexion, it all starts with collagen. Collagen is one of your body's major building blocks; it's a protein and critical to keeping your skin structure strong.",
+  galleryImages: [
+    "https://bw-kidxtore.bzotech.com/wp-content/uploads/2023/04/blog-2.jpg",
+    "https://bw-kidxtore.bzotech.com/wp-content/uploads/2023/04/blog-3.jpg",
+  ],
+  body2:
+    "Sagittis tincidunt nisl etiam ante netus magnis parturient, vel litora purus poscitur risus elit, sed dolor vestibulum aliquet ridiculus vitae vehicula. Cum magnis turpis a duis sapien lectus litora amet conubia praesent metus, sociis tincidunt volutpat fringilla curae mi risus et semper conubia.",
+  tags: ["Children Care", "Jigsaw Puzzle", "New Collection"],
+};

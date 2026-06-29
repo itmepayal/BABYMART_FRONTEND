@@ -34,7 +34,7 @@ export const NewsletterBanner = () => {
       </div>
 
       <div className="relative z-10 mx-auto flex max-w-xl flex-col items-center justify-center px-5 py-8 text-center sm:px-8 sm:py-9 md:py-10">
-        <h2 className="mb-4 text-base font-extrabold uppercase tracking-[0.1em] text-white sm:mb-5 sm:text-lg sm:tracking-[0.15em]">
+        <h2 className="mb-4 text-base font-extrabold uppercase tracking-widest text-white sm:mb-5 sm:text-lg sm:tracking-[0.15em]">
           Be The First To Know?
         </h2>
 

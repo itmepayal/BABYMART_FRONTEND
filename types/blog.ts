@@ -6,3 +6,18 @@ export interface NewsPost {
   comments: number;
   href?: string;
 }
+
+export type BlogPost = {
+  slug: string;
+  image: string;
+  tags: string[];
+  title: string;
+  author: string;
+  date: string;
+  commentsCount: number;
+  excerpt: string;
+};
+
+export type BlogPostCardProps = {
+  post: BlogPost;
+};

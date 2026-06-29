@@ -1,3 +1,6 @@
+import { SortOption } from "@/types/product";
+import { RotateCcw, Tag, Truck } from "lucide-react";
+
 export interface ProductBadge {
   label: string;
   tone?: "new" | "sale" | "hot" | "bestseller" | string;
@@ -230,3 +233,107 @@ export const latestProducts: Product[] = [
 export const PRICE_MIN = 0;
 export const PRICE_MAX = 670;
 export const PRODUCTS_PER_PAGE = 6;
+
+export const sortOptions: { value: SortOption; label: string }[] = [
+  { value: "default", label: "Default sorting" },
+  { value: "price-asc", label: "Price: low to high" },
+  { value: "price-desc", label: "Price: high to low" },
+  { value: "rating", label: "Highest rated" },
+];
+
+export const product = {
+  id: "toy01",
+  title: "Et elit vivamus nisl",
+  rating: 4,
+  reviewCount: 3,
+  badge: "Sale 50%",
+  description:
+    "Et usu viris movet consul, quo primis lorem labitur ullamcorper euismod lobortis sed nibh eu accumsan consequat.",
+  price: 29.0,
+  oldPrice: 58.0,
+  sku: "toy01",
+  categories: [
+    "3+",
+    "4 years",
+    "2-4",
+    "3-5 years",
+    "toddler toys",
+    "summer toys",
+    "stuffed toys",
+    "wooden toys",
+  ],
+  tags: ["toy", "toys", "toys & games", "wooden toys"],
+  countdown: { days: 350, hours: 2, minutes: 2, seconds: 5 },
+  images: [
+    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&h=600&fit=crop",
+    "https://bw-kidxtore.bzotech.com/wp-content/uploads/2023/06//product-new-20-400x400.png",
+    "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=600&h=600&fit=crop",
+  ],
+  offers: [
+    { icon: Truck, text: "Free shipping orders from $250" },
+    { icon: Tag, text: "500 sales in list" },
+    { icon: RotateCcw, text: "Returns within 30 days" },
+  ],
+};
+
+export const relatedProducts = [
+  {
+    id: "r1",
+    title: "Astros pullover easily",
+    price: 40.0,
+    oldPrice: null,
+    rating: 3,
+    image:
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop",
+  },
+  {
+    id: "r2",
+    title: "Cute animal manor",
+    price: 32.0,
+    oldPrice: 45.0,
+    rating: 4,
+    image:
+      "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=300&fit=crop",
+  },
+  {
+    id: "r3",
+    title: "Children stiches matching",
+    price: 48.0,
+    oldPrice: 60.0,
+    rating: 3,
+    image:
+      "https://bw-kidxtore.bzotech.com/wp-content/uploads/2023/06//product-new-20-400x400.png",
+  },
+  {
+    id: "r4",
+    title: "Ipsum color kit",
+    price: 43.0,
+    oldPrice: null,
+    rating: 4,
+    image:
+      "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=300&h=300&fit=crop",
+  },
+  {
+    id: "r5",
+    title: "Vivamus ac nonpara cut",
+    price: 48.0,
+    oldPrice: null,
+    rating: 3,
+    image:
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop",
+  },
+];
+
+export const additionalInfoRows = [
+  { label: "Weight", value: "57 kg" },
+  { label: "Dimensions", value: "43 × 42 × 66 cm" },
+];
+
+export const existingReviews = [
+  {
+    name: "Sarah",
+    rating: 5,
+    comment: "Great toy for kids, very durable and safe.",
+  },
+];

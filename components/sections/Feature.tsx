@@ -7,7 +7,7 @@ export const Feature = () => {
     <div className="mx-auto max-w-330">
       <div
         className="
-  flex flex-col gap-4 rounded-lg bg-main-mix-bg/50
+  flex flex-col gap-4 rounded bg-main-mix-bg/50
   px-4 py-6
   lg:flex-row lg:items-center lg:justify-between lg:px-8 lg:py-7
 "

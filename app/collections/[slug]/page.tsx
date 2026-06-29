@@ -2,13 +2,13 @@
 
 import { use, useMemo, useState } from "react";
 import { notFound } from "next/navigation";
-import { List, Grid2x2, Columns3 } from "lucide-react";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Pagination } from "@/components/common/Pagination";
 import { ProductCard } from "@/components/product/ProductCard";
 import { MarketSidebar } from "@/components/market/MarketSidebar";
 import { ViewModal } from "@/components/product/ViewModal";
 import { CartDrawer, type CartItem } from "@/components/product/Cartdrawer";
+import { ListToolbar, type ViewMode } from "@/components/common/ListToolbar";
 import type { Product } from "@/types/product";
 import {
   allProducts,
@@ -43,7 +43,7 @@ const CollectionDetailPage = ({ params }: CollectionDetailPageProps) => {
     PRICE_MAX,
   ]);
   const [sortBy, setSortBy] = useState<SortOption>("default");
-  const [view, setView] = useState<"list" | "grid" | "compact">("grid");
+  const [view, setView] = useState<ViewMode>("grid");
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(
     null,
   );
@@ -161,9 +161,14 @@ const CollectionDetailPage = ({ params }: CollectionDetailPageProps) => {
     Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE),
   );
 
-  const paginatedProducts = useMemo(() => {
+  const { paginatedProducts, rangeStart, rangeEnd } = useMemo(() => {
     const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
-    return filteredProducts.slice(start, start + PRODUCTS_PER_PAGE);
+    const end = Math.min(start + PRODUCTS_PER_PAGE, filteredProducts.length);
+    return {
+      paginatedProducts: filteredProducts.slice(start, end),
+      rangeStart: filteredProducts.length === 0 ? 0 : start + 1,
+      rangeEnd: end,
+    };
   }, [currentPage, filteredProducts]);
 
   const goToPage = (page: number) => {
@@ -173,11 +178,10 @@ const CollectionDetailPage = ({ params }: CollectionDetailPageProps) => {
 
   const gridColsClass =
     view === "grid"
-      ? "grid-cols-3 sm:grid-cols-4"
+      ? "grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
       : view === "compact"
-        ? "grid-cols-4 sm:grid-cols-5"
-        : "grid-cols-2 sm:grid-cols-3";
-
+        ? "grid-cols-2 xs:grid-cols-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6"
+        : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4";
   return (
     <>
       <Breadcrumb
@@ -209,67 +213,19 @@ const CollectionDetailPage = ({ params }: CollectionDetailPageProps) => {
             </div>
 
             <div className="flex flex-col gap-6">
-              <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-gray-100 px-4 py-3">
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value as SortOption)}
-                  className="rounded border border-gray-200 px-3 py-1.5 text-sm text-(--body_typo-color) focus:border-main focus:outline-none"
-                >
-                  {sortOptions.map((opt) => (
-                    <option key={opt.value} value={opt.value}>
-                      {opt.label}
-                    </option>
-                  ))}
-                </select>
-
-                <div className="flex items-center gap-3">
-                  <p className="text-sm text-(--body_typo-color)">
-                    Showing {paginatedProducts.length} of{" "}
-                    {filteredProducts.length} results
-                  </p>
-                  <div className="flex items-center gap-1.5">
-                    <button
-                      type="button"
-                      onClick={() => setView("list")}
-                      aria-label="List view"
-                      aria-pressed={view === "list"}
-                      className={`flex h-8 w-8 items-center justify-center rounded transition-colors ${
-                        view === "list"
-                          ? "bg-main text-white"
-                          : "text-(--body_typo-color) hover:bg-main-mix-bg/40"
-                      }`}
-                    >
-                      <List className="h-4 w-4" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setView("grid")}
-                      aria-label="Grid view"
-                      aria-pressed={view === "grid"}
-                      className={`flex h-8 w-8 items-center justify-center rounded transition-colors ${
-                        view === "grid"
-                          ? "bg-main text-white"
-                          : "text-(--body_typo-color) hover:bg-main-mix-bg/40"
-                      }`}
-                    >
-                      <Grid2x2 className="h-4 w-4" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setView("compact")}
-                      aria-label="Compact grid view"
-                      aria-pressed={view === "compact"}
-                      className={`flex h-8 w-8 items-center justify-center rounded transition-colors ${
-                        view === "compact"
-                          ? "bg-main text-white"
-                          : "text-(--body_typo-color) hover:bg-main-mix-bg/40"
-                      }`}
-                    >
-                      <Columns3 className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
+              <ListToolbar
+                sortBy={sortBy}
+                sortOptions={sortOptions}
+                onSortChange={(value) => {
+                  setSortBy(value);
+                  setCurrentPage(1);
+                }}
+                rangeStart={rangeStart}
+                rangeEnd={rangeEnd}
+                total={filteredProducts.length}
+                view={view}
+                onViewChange={setView}
+              />
 
               {paginatedProducts.length > 0 ? (
                 <div
