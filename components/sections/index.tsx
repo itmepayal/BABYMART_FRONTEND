@@ -12,7 +12,7 @@ import { Blogs } from "@/components/sections/Blogs";
 
 const Page = () => {
   return (
-    <main className="sm:space-y-10 space-y-3 sm:pt-10 pt-4 px-4 sm:px-0 ">
+    <main className="w-screen overflow-x-hidden sm:w-full space-y-3 sm:space-y-10 pt-4 sm:pt-10 px-4 sm:px-0">
       <Banner />
       <Feature />
       <FlashSale />
