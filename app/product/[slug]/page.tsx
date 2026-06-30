@@ -70,7 +70,7 @@ const ProductDetailPage = () => {
                 </div>
               </div>
               <div className="flex gap-3">
-                {product.images.map((img, i) => (
+                {product.images.slice(0, 3).map((img, i) => (
                   <button
                     key={i}
                     type="button"
