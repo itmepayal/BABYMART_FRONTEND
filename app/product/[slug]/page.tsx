@@ -40,7 +40,7 @@ const ProductDetailPage = () => {
   const [showReviewForm, setShowReviewForm] = useState(false);
 
   return (
-    <>
+    <div className="overflow-x-hidden">
       <Breadcrumb
         title="Product"
         breadcrumbs={[
@@ -70,7 +70,7 @@ const ProductDetailPage = () => {
                 </div>
               </div>
               <div className="flex gap-3">
-                {product.images.slice(0, 3).map((img, i) => (
+                {product.images.map((img, i) => (
                   <button
                     key={i}
                     type="button"
@@ -519,7 +519,7 @@ const ProductDetailPage = () => {
           <NewsletterBanner />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
