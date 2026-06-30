@@ -62,7 +62,7 @@ const CheckoutPage = () => {
             </div>
 
             {couponVisible && (
-              <div className="flex items-center gap-3 rounded border border-gray-200 bg-white px-4 py-4 shadow-sm">
+              <div className="flex flex-col sm:flex-row items-center gap-3 rounded border border-gray-200 bg-white px-4 py-4 shadow-sm">
                 <input
                   type="text"
                   placeholder="Coupon code"
