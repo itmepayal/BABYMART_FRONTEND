@@ -53,6 +53,29 @@ export const navLinks = [
   },
 ];
 
+export const mobileNavLinks = [
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "Shop",
+    href: "/shop",
+  },
+  {
+    label: "Blog",
+    href: "/blog",
+  },
+  {
+    label: "About Us",
+    href: "/about",
+  },
+  {
+    label: "Contact Us",
+    href: "/contact",
+  },
+];
+
 export const Features = [
   {
     id: "daily-offers",

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
-import { categories, navLinks } from "@/lib/constants";
+import { categories, navLinks, mobileNavLinks } from "@/lib/constants";
 import { Navbar } from "@/components/layout/header/Navbar";
 import { SearchBar } from "@/components/layout/header/SearchBar";
 import { MobileMenu } from "@/components/layout/header/MobileMenu";
@@ -79,7 +79,7 @@ const Header = () => {
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
         categories={categories}
-        navLinks={navLinks}
+        navLinks={mobileNavLinks}
         wishlistCount={wishlistCount}
         isWishlisted={isWishlisted}
         onOpenLogin={() => openDrawer("login")}

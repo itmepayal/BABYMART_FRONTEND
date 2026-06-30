@@ -58,7 +58,6 @@ export const MobileMenu = ({
           </button>
         </div>
 
-        {/* Navigation */}
         <div className="flex flex-col py-2 border-b border-line">
           {navLinks.map((link) => (
             <a
@@ -71,7 +70,6 @@ export const MobileMenu = ({
           ))}
         </div>
 
-        {/* Categories */}
         <div className="border-b border-line">
           <button
             className="w-full flex items-center justify-between px-5 py-3.5 font-bold text-[15px] text-ink"
@@ -127,7 +125,6 @@ export const MobileMenu = ({
           )}
         </div>
 
-        {/* Actions */}
         <div className="flex flex-col py-2 border-b border-line">
           <button
             onClick={() => {
@@ -141,7 +138,7 @@ export const MobileMenu = ({
           </button>
 
           <a
-            href="#"
+            href="wishlist"
             className="flex items-center justify-between gap-3 px-5 py-3 text-[14.5px] font-semibold text-ink hover:text-teal-dark transition-colors"
           >
             <span className="flex items-center gap-3">
